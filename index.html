@@ -3,9 +3,12 @@
     <head>
         <titil>Board Game</titil>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        
+        <meta name="viewport" content="width=device-width">
+        
         <style>
               table{
-                  margin-left: 300px;
+                  margin-left: 200px;
                   margin-top: 100px;
               
            
@@ -27,13 +30,43 @@
             
             
             }
-                
+            #roll{
+                position: relative;
+                bottom: 50px;
+                background-color: white;
+            }  
+            #playertd{
+                background-color:whitesmoke;
+                border: 0;
+            
+            
+            
+            
+            }
+            #player1{
+                border-radius: 6px;
+                text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+                background-color: cornflowerblue;
                
             
-        
-        
-        
-        
+            
+            
+            }
+            #player2{
+                border-radius: 6px;
+                text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+                background-color: palevioletred;
+               
+            }
+            #play1,#play2 {
+                position:absolute;
+                width: 65px;
+                height: 70px;
+                top: 130px;
+                left: 210px;
+                transition:all 0.5s;
+            }  
+               
         </style>
         
     
@@ -41,12 +74,14 @@
     
     </head>
     <body>
+        <img src="player2.png" id="play2">
+        <img src="player1.png" id="play1">
         <table>
             <center>
+               
              
             
             <tr class="circle">
-                <td>GO</td>
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -56,7 +91,10 @@
                 <td>7</td>
                 <td>8</td>
                 <td>9</td>
-                <td>11</td>
+                <td>10</td>
+                <td >11</td>
+                 
+                <td>12</td>
             </tr>
             <tr class="circle">
                <td>Over</td>
@@ -69,7 +107,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>12</td>
+                <td></td>
+                <td>11</td>
             </tr>
              <tr class="circle">
                  <td>30</td>
@@ -82,7 +121,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>13</td>
+                 <td></td>
+                <td>12</td>
             </tr>
            <tr class="circle">
                  <td>29</td>
@@ -90,12 +130,14 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><img id="diceimg1"src="dodecahedron-frame1%20(1).png" height="70" width="65"><span id="roll"></span></td>
+                <td id="roll"><img id="diceimg1" src="dodecahedron-frame1.png" width="65"; height="65"><span id="inner-roll"></span></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>11</td>
+               <td></td>
+               
+                <td>13</td>
             </tr>
             <tr class="circle">
                  <td>28</td>
@@ -103,6 +145,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td id="playertd"><button onclick="meetplay" id="player1">Player 1</button><br>
+                <button id="player2">Player 2</button></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -112,6 +156,7 @@
             </tr>
             <tr class="circle">
                  <td>27</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -135,26 +180,44 @@
                 <td>18</td>
                 <td>17</td>
                 <td>16</td>
+                <td><em><strong>Bonus</strong></em><br>roll dice again </td>
             </tr>
         
             </tr>
         </table>
 <script>
+    var PLAYER1POS = 0;
+    var PLAYER2POS = 0;
    var img = document.getElementById("diceimg1");
     img.onclick = function(){
-    var face = Math.round(Math.random()*6);
-    
-    if(img.src.includes("frame1")){
-        img.src="img/dodecahedron.gif";
-        setTimeout(function(){
-            img.src = "img/dodecahedron-frame1.png";
-            document.getElementById("roll").innerHTML=face;
-        },2000);
-    }
-    
+        var face = Math.round(Math.random()*6);
+        PLAYER1POS = PLAYER1POS + face;
+
+        if(img.src.includes("frame1")){
+            img.src="dodecahedron.gif";
+            setTimeout(function(){
+                img.src = "dodecahedron-frame1.png";
+                document.getElementById("inner-roll").innerHTML=face;
+                if (PLAYER1POS< 13)
+                    $("#play1").css("transform","translate("+(70*PLAYER1POS)+"px,0)");
+                else if(PLAYER1POS<19)
+                    $
+            },2000);
+        }
+        
+        
     
 
 };
+    
+    function meetplayer(){
+    var player = prompt("Hello! What's your name?");
+        if(player != null){
+            document.getElementById().innerHTML=
+                "Hello "+player+ "! Good Luck";
+        
+        }
+    };
   
     
   
