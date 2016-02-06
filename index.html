@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <titil>Board Game</titil>
+        <title>Board Game</title>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         
         <meta name="viewport" content="width=device-width">
         
         <style>
+            
               table{
                   margin-left: 200px;
-                  margin-top: 100px;
+                  margin-top: 125px;
                   background-image:url(player2.png);
                   
               
@@ -200,8 +201,10 @@
     var PLAYER2POS = 0;
    var btn =document.getElementById("player1");
    btn.onclick = function(){
-        var face = Math.round(Math.random()*6);
+       $("#inner-roll").html("");
+       var face = Math.round(Math.random()*6);
         PLAYER1POS = PLAYER1POS + face;
+       if (PLAYER1POS>28)PLAYER1POS=28;
        var img=document.getElementById("diceimg1");
 
         if(img.src.includes("frame1")){
@@ -225,6 +228,7 @@
     
     var btn2=document.getElementById("player2");
     btn2.onclick = function(){
+        $("#inner-roll").html("");
         var face = Math.round(Math.random()*6);
         PLAYER2POS = PLAYER2POS + face;
         if (PLAYER2POS>28)PLAYER2POS=28;
